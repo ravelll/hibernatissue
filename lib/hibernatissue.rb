@@ -1,7 +1,7 @@
 require 'octokit'
 require 'date'
 
-class Closer
+class Hibernatissue
   def initialize
     Octokit::configure do |c|
       c.api_endpoint = 'https://github.enter.prise/api/v3/'
@@ -11,7 +11,7 @@ class Closer
     @client = Octokit::Client.new(access_token: ENV['TOKEN'] || token)
   end
 
-  def close_issue
+  def close!
     issues_to_close.each do |issue|
       put_close_comment(issue)
 
